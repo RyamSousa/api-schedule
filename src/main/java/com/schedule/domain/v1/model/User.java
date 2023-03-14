@@ -1,6 +1,9 @@
-package com.schedule.api.domain.v1.model;
+package com.schedule.domain.v1.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -12,6 +15,9 @@ import static javax.persistence.CascadeType.*;
 import static javax.persistence.FetchType.*;
 import static javax.persistence.GenerationType.AUTO;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity(name = "users")
 public class User {
 
@@ -30,6 +36,7 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = ALL)
     private List<Service> services;
 
+    @JsonIgnore
     @NotNull
     @ManyToMany(fetch = EAGER)
     private List<Event> events = new ArrayList<>();

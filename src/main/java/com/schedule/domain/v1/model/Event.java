@@ -1,16 +1,29 @@
-package com.schedule.api.domain.v1.model;
+package com.schedule.domain.v1.model;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import static javax.persistence.GenerationType.AUTO;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity(name = "events")
 public class Event {
 
     @Id
     @GeneratedValue(strategy = AUTO, generator = "id_event")
     private Long id;
+
+    @NotNull
+    private String clientName;
+
+    @NotNull
+    private String clientPhone;
 
     @NotNull
     @Column(name = "start_date")
@@ -22,11 +35,6 @@ public class Event {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
-
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "service_id")
+    @JoinColumn(name = "service_id", nullable = false)
     private Service service;
 }
