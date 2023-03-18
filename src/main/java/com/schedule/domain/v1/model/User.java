@@ -26,10 +26,18 @@ public class User {
     private Long id;
 
     @NotNull
+    private String uuId;
+
+    @NotNull
     private String name;
 
     @NotNull
     private String occupation;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "officetime_id", nullable = false)
+    private OfficeTime officeTime;
 
     @JsonIgnore
     @NotNull

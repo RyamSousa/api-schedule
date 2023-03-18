@@ -13,6 +13,7 @@ import static javax.persistence.GenerationType.AUTO;
 @Setter
 @NoArgsConstructor
 @Entity(name = "events")
+// TEMPORARY (go to the firebase)
 public class Event {
 
     @Id
